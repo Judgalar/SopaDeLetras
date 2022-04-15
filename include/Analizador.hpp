@@ -11,13 +11,20 @@ using namespace std;
 
 class Analizador{
     private:
+
         char rutaFichero[256];
         map<string,int> mapa;
+
     public:
+
         Analizador();
-        Analizador(char);
-        void getRuta();
-        void leerFichero(string);
+        Analizador(string);
+
+        string getRuta();
+        void leerFichero();
+
+        void txtToMap();
+
 
 };
 

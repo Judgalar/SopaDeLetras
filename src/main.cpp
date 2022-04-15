@@ -4,11 +4,10 @@ using namespace std;
 
 int main()
 {
-    Analizador a;
+    Analizador analizador;                                  // texto predeterminado: bin/texto.txt
+    Analizador analizador2("/home/jd/Escritorio/isra");
 
-    a.getRuta();
-
-    cout<<endl<<endl;
+    analizador.txtToMap();
 
     return 0;
 }
