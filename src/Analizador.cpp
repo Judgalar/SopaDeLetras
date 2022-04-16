@@ -7,17 +7,21 @@
 Analizador::Analizador(){
     getcwd(rutaFichero, 256);
     strcat(rutaFichero,"/texto.txt");
+    txtToMap();
 }
 
-Analizador::Analizador(string ruta){
+Analizador::Analizador(string ruta)
+{
     for(int i=0;i<ruta.length();i++){
         rutaFichero[i] = ruta[i];
     }
+    txtToMap();
 }
 
 string Analizador::getRuta(){
     return rutaFichero;
 }
+
 void Analizador::leerFichero(){
     ifstream fichero(rutaFichero);
     string linea;
@@ -83,6 +87,7 @@ void Analizador::histograma_H(){
 }
 
 void Analizador::histograma_V(){
+
 }
 
 void Analizador::calcular_longitudMedia(){
