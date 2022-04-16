@@ -27,7 +27,7 @@ void Analizador::leerFichero(){
         contador++;
         cout << "linea " << contador << ": " << linea << endl;
     }
-    fichero.close();//cierro fichero
+    fichero.close();        //cierra fichero
 
 }
 
@@ -42,12 +42,17 @@ void Analizador::txtToMap(){
         {
             string palabra;
             char letra = *itLetra;
+            if (letra != 0) totalCaracteres_++;
+            if ( (letra != 0) && (letra != 32) ) totalCaracteres++;
             while( (letra>=65 && letra<=90) || (letra>=97 && letra<=122) )        //LETRAS PERMITIDAS
             {
                 if(letra>=65 && letra<=90) letra=letra+32;  // Convertir letra mayúscula a minúscula
                 palabra=palabra+letra;
                 itLetra++;
                 letra = *itLetra;
+                if (letra != 0) totalCaracteres_++;
+                if ( (letra != 0) && (letra != 32) ) totalCaracteres++;
+
         
             }
             if(palabra!=""){                                        //AÑADIR PALABRAS Y REPETICIONES AL MAPA
@@ -61,4 +66,73 @@ void Analizador::txtToMap(){
         }
     }
     fichero.close();    //cierra fichero
+}
+
+void Analizador::histograma_H(){
+    auto it = mapa.begin();
+    while( it != mapa.end() )
+    {
+        cout << "[" << it->first << "]";
+        for(int i=0 ; i < it->second ; i++){
+            cout<<"#";
+        }
+        cout<<endl;
+        it++;
+    }
+
+}
+
+void Analizador::histograma_V(){
+}
+
+void Analizador::calcular_longitudMedia(){
+    auto it = mapa.begin();
+    string palabra;
+    float nPalabras=0;
+    float size=0;
+    float media;
+
+    while( it != mapa.end() )
+    {
+        palabra = it->first;
+        for(auto iter = palabra.begin() ; iter < palabra.end() ; iter++){
+            size++;
+        }
+        it++;
+        nPalabras++;
+    }
+    media = size/nPalabras;
+    cout<<"La longitud media de las palabras es de "<<media<<" letras"<<endl;
+}
+
+string Analizador::palabraMasUsada()
+{
+    string resul = mapa.begin()->first;
+    int maxRepeticiones = mapa.begin()->second;
+
+    for(auto it = mapa.begin() ; it != mapa.end() ; it++)
+    {
+        if(it->second > maxRepeticiones){
+            maxRepeticiones = it->second;
+            resul = it->first;
+        }   
+    }
+
+    return resul;
+}
+
+string Analizador::palabraMenosUsada()
+{
+    string resul = mapa.begin()->first;
+    int maxRepeticiones = mapa.begin()->second;
+
+    for(auto it = mapa.begin() ; it != mapa.end() ; it++)
+    {
+        if(it->second < maxRepeticiones){
+            maxRepeticiones = it->second;
+            resul = it->first;
+        }   
+    }
+
+    return resul;
 }
