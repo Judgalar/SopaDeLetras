@@ -1,5 +1,4 @@
 #include <Analizador.hpp>
-#include <Sopa.hpp>
 
 using namespace std;
 
@@ -8,6 +7,8 @@ int main()
     Analizador analizador;                                  // texto predeterminado: bin/texto.txt
     Analizador analizador2("/home/jd/c++/SopaDeLetras/bin/texto2.txt");
 
+    analizador.txtToMap();
+    analizador2.txtToMap();
 
     cout<<"HISTOGRAMA HORIZONTAL"<<endl;
     analizador.histograma_H();
@@ -16,14 +17,11 @@ int main()
     cout<<"La palabra mas repetida es : "<< analizador.palabraMasUsada() <<endl;
     cout<<"La palabra menos repetida es : "<< analizador.palabraMenosUsada() <<endl;
    
-    Sopa sopa;
-
-    cout<<endl;
-    cout<<"SOPA DE LETRAS"<<endl;
-    sopa.imprimirSopa();
-
-
-
+    
+    analizador.rellenarSopa();
+    analizador.imprimirSopa();
+    
+    analizador.palabrasEncontradas();
 
 
     return 0;

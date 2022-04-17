@@ -1,28 +1,21 @@
 #include <Analizador.hpp>
 
-#include <unistd.h>
-#include <bits/stdc++.h> 
 
-
-Analizador::Analizador(){
-    getcwd(rutaFichero, 256);
-    strcat(rutaFichero,"/texto.txt");
-    txtToMap();
-}
-
-Analizador::Analizador(string ruta)
+void Analizador::setRutaFichero(string ruta)
 {
-    for(int i=0;i<ruta.length();i++){
+    for(int i=0;i<=256;i++){     //Resetea la ruta guardada al fichero de texto
+        rutaFichero[i] = 0;
+    }
+
+    for(int i=0;i<ruta.length();i++){     //Establece la ruta al fichero de texto indicado
         rutaFichero[i] = ruta[i];
     }
-    txtToMap();
 }
-
-string Analizador::getRuta(){
+string Analizador::getRutaFichero(){
     return rutaFichero;
 }
 
-void Analizador::leerFichero(){
+void Analizador::leerTXT_Texto(){
     ifstream fichero(rutaFichero);
     string linea;
     int contador = 0;
@@ -60,11 +53,11 @@ void Analizador::txtToMap(){
         
             }
             if(palabra!=""){                                        //AÑADIR PALABRAS Y REPETICIONES AL MAPA
-                if(mapa.find(palabra) == mapa.end()){
-                     mapa[palabra]=1;
+                if(mapaFichero.find(palabra) == mapaFichero.end()){
+                     mapaFichero[palabra]=1;
                 }
                 else{
-                    mapa[palabra]++;
+                    mapaFichero[palabra]++;
                 }
             }
         }
@@ -73,8 +66,8 @@ void Analizador::txtToMap(){
 }
 
 void Analizador::histograma_H(){
-    auto it = mapa.begin();
-    while( it != mapa.end() )
+    auto it = mapaFichero.begin();
+    while( it != mapaFichero.end() )
     {
         cout << "[" << it->first << "]";
         for(int i=0 ; i < it->second ; i++){
@@ -91,13 +84,13 @@ void Analizador::histograma_V(){
 }
 
 void Analizador::calcular_longitudMedia(){
-    auto it = mapa.begin();
+    auto it = mapaFichero.begin();
     string palabra;
     float nPalabras=0;
     float size=0;
     float media;
 
-    while( it != mapa.end() )
+    while( it != mapaFichero.end() )
     {
         palabra = it->first;
         for(auto iter = palabra.begin() ; iter < palabra.end() ; iter++){
@@ -112,10 +105,10 @@ void Analizador::calcular_longitudMedia(){
 
 string Analizador::palabraMasUsada()
 {
-    string resul = mapa.begin()->first;
-    int maxRepeticiones = mapa.begin()->second;
+    string resul = mapaFichero.begin()->first;
+    int maxRepeticiones = mapaFichero.begin()->second;
 
-    for(auto it = mapa.begin() ; it != mapa.end() ; it++)
+    for(auto it = mapaFichero.begin() ; it != mapaFichero.end() ; it++)
     {
         if(it->second > maxRepeticiones){
             maxRepeticiones = it->second;
@@ -128,10 +121,10 @@ string Analizador::palabraMasUsada()
 
 string Analizador::palabraMenosUsada()
 {
-    string resul = mapa.begin()->first;
-    int maxRepeticiones = mapa.begin()->second;
+    string resul = mapaFichero.begin()->first;
+    int maxRepeticiones = mapaFichero.begin()->second;
 
-    for(auto it = mapa.begin() ; it != mapa.end() ; it++)
+    for(auto it = mapaFichero.begin() ; it != mapaFichero.end() ; it++)
     {
         if(it->second < maxRepeticiones){
             maxRepeticiones = it->second;
