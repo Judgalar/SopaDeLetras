@@ -1,7 +1,19 @@
-#include <Analizador.hpp>
+#include <SopaDeLetras.hpp>
 
 
-void Analizador::setRutaSopa(string ruta)
+SopaDeLetras::SopaDeLetras(){
+    getcwd(rutaSopa, 256);
+    strcat(rutaSopa,"/sopa.txt");           //Establece la ruta al fichero de sopa de letras por defecto
+}
+
+SopaDeLetras::SopaDeLetras(string ruta_S)
+{
+    for(int i=0;i<ruta_S.length();i++){     //Establece la ruta al fichero de texto indicada
+        rutaSopa[i] = ruta_S[i];
+    }
+}
+
+void SopaDeLetras::setRutaSopa(string ruta)
 {
     for(int i=0;i<=256;i++){     //Resetea la ruta guardada fichero de sopa de letras
         rutaSopa[i] = 0;
@@ -12,11 +24,19 @@ void Analizador::setRutaSopa(string ruta)
     }
 }
 
-string Analizador::getRutaSopa(){
+string SopaDeLetras::getRutaSopa(){
     return rutaSopa;
 }
 
-void Analizador::leerTXT_Sopa(){
+int SopaDeLetras::getFilas(){
+    return filas;
+}
+
+int SopaDeLetras::getColumnas(){
+    return columnas;
+}
+
+void SopaDeLetras::leerTXT_Sopa(){
     ifstream fichero(rutaSopa);
     string linea;
     int contador = 0;
@@ -29,7 +49,7 @@ void Analizador::leerTXT_Sopa(){
 
 }
 
-void Analizador::rellenarSopa(){
+void SopaDeLetras::rellenarSopa(){
     ifstream fichero(rutaSopa);
     string linea;
     string::iterator itLetra;
@@ -38,6 +58,7 @@ void Analizador::rellenarSopa(){
     while(getline(fichero, linea))
     {
         nLinea++;
+        filas++;
         for(itLetra=linea.begin() ; itLetra<linea.end() ; itLetra++)
         {
             string palabra;
@@ -48,7 +69,7 @@ void Analizador::rellenarSopa(){
                 palabra=palabra+letra;
                 itLetra++;
                 letra = *itLetra;
-                if(nLinea==1) columnasSopa++;
+                if(nLinea==1) columnas++;
             }
 
             if(palabra!="")
@@ -61,10 +82,10 @@ void Analizador::rellenarSopa(){
     fichero.close();    //cierra fichero
 }
 
-void Analizador::imprimirSopa()
+void SopaDeLetras::imprimirSopa()
 {
     for(auto it = mapaSopa.begin() ; it!=mapaSopa.end() ; ){
-        for(int x=0 ; x<columnasSopa ; x++){
+        for(int x=0 ; x<columnas ; x++){
             cout << "[" << it->second << "]";
             it++;
         }
@@ -73,49 +94,10 @@ void Analizador::imprimirSopa()
     }
 }
 
-// METODOS PARA BUSCAR EN LA SOPA DE LETRAS
-
-string Analizador::seleccionarPalabra( auto it)     // Devuelve la palabra del mapa
-{
-    return it->first;
-}
-
-string Analizador::seleccionarLetraSopa(int id)     // Devuelve la letra de la sopa
+string SopaDeLetras::seleccionarLetra(int id)     // Devuelve la letra de la sopa
 {
     if( mapaSopa.find(id) != mapaSopa.end() ){
         return ( mapaSopa.find(id) )-> second;
     }
-}
-
-bool Analizador::buscarPalabra(string palabra)      // Busca la palabra en la sopa
-{
-    bool encontrada=false;
-    string elemento;
-    int id=1;
-    for(auto itLetra = palabra.begin() ; itLetra != palabra.end() ; itLetra++)
-    {
-        string letra="";
-        letra = letra + *itLetra;
-        string palabro = palabro + letra;
-        elemento = seleccionarLetraSopa(id);
-        while( letra != elemento){
-            id++;
-            elemento = seleccionarLetraSopa(id);
-            if(elemento == "") break;
-        }
-    }
-
-    return encontrada;
-}
-
-void Analizador::palabrasEncontradas()      //Imprime las palabras encontradas
-{
-    string palabra;
-    for(auto it = mapaFichero.begin(); it != mapaFichero.end() ; it++)
-    {
-        palabra=seleccionarPalabra(it);
-        if( buscarPalabra(palabra) )
-            cout<<"["<<palabra<<"]"<<" esta en la sopa"<<endl;
-    }
-    
+    else return "";
 }

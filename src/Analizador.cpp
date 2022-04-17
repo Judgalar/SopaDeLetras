@@ -1,6 +1,18 @@
 #include <Analizador.hpp>
 
 
+Analizador::Analizador(){
+    getcwd(rutaFichero, 256);
+    strcat(rutaFichero,"/texto.txt");       //Establece la ruta al fichero de texto por defecto
+}
+
+Analizador::Analizador(string ruta_T)
+{
+    for(int i=0;i<ruta_T.length();i++){     //Establece la ruta al fichero de texto indicada
+        rutaFichero[i] = ruta_T[i];
+    }
+}
+
 void Analizador::setRutaFichero(string ruta)
 {
     for(int i=0;i<=256;i++){     //Resetea la ruta guardada al fichero de texto
@@ -133,4 +145,9 @@ string Analizador::palabraMenosUsada()
     }
 
     return resul;
+}
+
+string Analizador::seleccionarPalabra( auto it)     // Devuelve la palabra del mapa
+{
+    return it->first;
 }
