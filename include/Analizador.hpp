@@ -31,6 +31,8 @@ class Analizador{
         void setRutaFichero(string);
 
         string getRutaFichero();
+        int getTotalCaracteres();
+        int getTotalCaracteres_();
 
         void leerTXT_Texto();
 

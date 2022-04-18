@@ -23,8 +23,17 @@ void Analizador::setRutaFichero(string ruta)
         rutaFichero[i] = ruta[i];
     }
 }
+
 string Analizador::getRutaFichero(){
     return rutaFichero;
+}
+
+int Analizador::getTotalCaracteres(){
+    return totalCaracteres;
+}
+
+int Analizador::getTotalCaracteres_(){
+    return totalCaracteres_;
 }
 
 void Analizador::leerTXT_Texto(){

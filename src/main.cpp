@@ -14,9 +14,12 @@ int main()
     analizador2.txtToMap();
 
     SopaDeLetras sopa1;
+    SopaDeLetras sopa2("/home/jd/c++/SopaDeLetras/bin/sopa2.txt");
 
     sopa1.rellenarSopa();
+    sopa2.rellenarSopa();
 
+//ANALIZADOR 1 Y SOPA 1
     
     // METODOS ANALIZADOR
 
@@ -26,6 +29,8 @@ int main()
     analizador1.calcular_longitudMedia();
     cout<<"La palabra mas repetida es : "<< analizador1.palabraMasUsada() <<endl;
     cout<<"La palabra menos repetida es : "<< analizador1.palabraMenosUsada() <<endl;
+    cout<<"Total de caracteres (sin contar los espacios en blanco) -> "<< analizador1.getTotalCaracteres() <<endl;
+    cout<<"Total de caracteres (contando los espacios en blanco) -> "<< analizador1.getTotalCaracteres_() <<endl;
     cout<<endl;
    
     //  SOPA DE LETRAS
@@ -39,11 +44,30 @@ int main()
             cout<<"'"<< (it->first) <<"'"<< " esta en la sopa"<<endl;
     }
     
-
-    int a;
-    cin>>a;
+//ANALIZADOR 2 Y SOPA 2
     
+    // METODOS ANALIZADOR
 
+    cout<<"HISTOGRAMA HORIZONTAL"<<endl;
+    analizador2.histograma_H();
+    cout<<endl;
+    analizador2.calcular_longitudMedia();
+    cout<<"La palabra mas repetida es : "<< analizador2.palabraMasUsada() <<endl;
+    cout<<"La palabra menos repetida es : "<< analizador2.palabraMenosUsada() <<endl;
+    cout<<"Total de caracteres (sin contar los espacios en blanco) -> "<< analizador2.getTotalCaracteres() <<endl;
+    cout<<"Total de caracteres (contando los espacios en blanco) -> "<< analizador2.getTotalCaracteres_() <<endl;
+    cout<<endl;
+   
+    //  SOPA DE LETRAS
+    cout<<"<SOPA DE LETRAS>"<<endl;
+    cout<<endl;
+    /* IMPRIMIR SOPA SEGMENTATION FAULT */
+    for(auto it = analizador2.mapaFichero.begin() ; it != analizador2.mapaFichero.end() ; it++)
+    {
+        if ( sopa2.buscarPalabra(it->first) ) 
+            cout<<"'"<< (it->first) <<"'"<< " esta en la sopa"<<endl;
+    }
+    /*SOLO IMPRIME a*/
 
     return 0;
 }
