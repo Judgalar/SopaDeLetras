@@ -29,23 +29,32 @@ int main()
 
    
     //  SOPA DE LETRAS
-
+    /*
     sopa1.imprimirSopa();
 
-    int fil = sopa1.getFilas();
-    int col = sopa1.getColumnas();
+    int maxFila = sopa1.getFilas();
+    int maxCol = sopa1.getColumnas();
+    iterator<string,int> it;
+    
+    string palabra;
 
-    string sopa[fil][col];
+    string sopa[maxFila][maxCol];
 
     int id=1;
-    for(int i=0 ; i<fil ; i++){
-        for(int j= 0 ; j<col ; j++)
+    for(int i=0 ; i<maxFila ; i++){                                 //RELLENA MATRIZ CON EL MAPA SOPA
+        for(int j= 0 ; j<maxCol ; j++)
         {
             sopa[i][j]= sopa1.seleccionarLetra(id);
             id++;
         }
     }
 
+
+    // PSEUDOCODIGO TO C++
+
+    
+
+    */
     int a;
     cin>>a;
     

@@ -94,10 +94,104 @@ void SopaDeLetras::imprimirSopa()
     }
 }
 
-string SopaDeLetras::seleccionarLetra(int id)     // Devuelve la letra de la sopa
+char SopaDeLetras::seleccionarLetra(int id)     // Devuelve la letra de la sopa
 {
+    char resul;
+    string letra;
     if( mapaSopa.find(id) != mapaSopa.end() ){
-        return ( mapaSopa.find(id) )-> second;
+        letra = ( mapaSopa.find(id) )-> second;
+        resul= letra[1];
     }
-    else return "";
+    else resul = 0;
+    return resul;
 }
+
+void SopaDeLetras::buscarPalabra(string palabra)
+{
+    int maxFila = getFilas();
+    int maxCol = getColumnas();
+    int direcFil;
+    int direcCol;
+    iterator<string,int> it;
+    
+    string palabra;
+
+    char sopa[maxFila][maxCol];
+
+    int id=1;
+    for(int i=0 ; i<maxFila ; i++){                                 //RELLENA MATRIZ CON EL MAPA SOPA
+        for(int j= 0 ; j<maxCol ; j++)
+        {
+            sopa[i][j] = seleccionarLetra(id);
+            id++;
+        }
+    }
+
+    //PSEUDOCODE TO C++
+
+    for( int f=0 ; f<=maxFila ; f++){
+        for( int c=0 ; c<=maxCol ; c++){
+            
+            if(palabra[0]==sopa[f][c]){
+
+                for( int direccion = 0; direccion<8 ; direccion++)
+                {
+                    switch(direccion)
+                    {
+                        case 0: //Derecha---->
+                            direcFil=0;
+                            direcCol=1;
+                            break;
+                        case 1: //Diagonal Abajo Derecha-->
+                            direcFil=1;
+                            direcCol=1;
+                            break;
+                        case 2: //Abajo
+                            direcFil=1;
+                            direcCol=0;
+                            break;
+                        case 3: //Diagonal Abajo Izquierda<--
+                            direcFil=1;
+                            direcCol=-1;
+                            break;
+                        case 4: //Izquierda <--
+                            direcFil=0;
+                            direcCol=-1;
+                            break;
+                        case 5: //Diagonal Izquierda Arriba<--
+                            direcFil=-1;
+                            direcCol=-1;
+                            break;
+                        case 6: //Arriba
+                            direcFil=-1;
+                            direcCol=0;
+                            break;
+                        case 7: //Diagonal Derecha Arriba-->
+                            direcFil=-1;
+                            direcCol=1;
+                            break;
+                    }
+
+                    bool seguir=true;
+                    int fila=f;
+                    int col=c;
+               //     for(int l=1 ; l < palabra.end())
+                }
+            }
+        }
+
+    }
+
+
+
+
+
+
+}
+
+
+
+
+
+
+

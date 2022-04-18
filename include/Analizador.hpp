@@ -19,9 +19,11 @@ class Analizador{
         int totalCaracteres=0;
         int totalCaracteres_=0;
 
-        map<string,int> mapaFichero;
+        
 
     public:
+
+        map<string,int> mapaFichero;
 
         Analizador();
         Analizador(string);

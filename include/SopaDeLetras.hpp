@@ -36,7 +36,9 @@ class SopaDeLetras{
         void rellenarSopa();
         void imprimirSopa();
 
-        string seleccionarLetra(int);       // selecciona letra de la sopa
+        char seleccionarLetra(int);       // selecciona letra de la sopa
+
+        void buscarPalabra(string);
 
 };
 
