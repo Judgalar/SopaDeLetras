@@ -38,7 +38,8 @@ class SopaDeLetras{
 
         char seleccionarLetra(int);       // selecciona letra de la sopa
 
-        void buscarPalabra(string);
+        bool esta_fuera(int fila,int columna);
+        bool buscarPalabra(string);
 
 };
 

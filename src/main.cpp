@@ -26,35 +26,20 @@ int main()
     analizador1.calcular_longitudMedia();
     cout<<"La palabra mas repetida es : "<< analizador1.palabraMasUsada() <<endl;
     cout<<"La palabra menos repetida es : "<< analizador1.palabraMenosUsada() <<endl;
-
+    cout<<endl;
    
     //  SOPA DE LETRAS
-    /*
+    cout<<"<SOPA DE LETRAS>"<<endl;
     sopa1.imprimirSopa();
+    cout<<endl;
 
-    int maxFila = sopa1.getFilas();
-    int maxCol = sopa1.getColumnas();
-    iterator<string,int> it;
-    
-    string palabra;
-
-    string sopa[maxFila][maxCol];
-
-    int id=1;
-    for(int i=0 ; i<maxFila ; i++){                                 //RELLENA MATRIZ CON EL MAPA SOPA
-        for(int j= 0 ; j<maxCol ; j++)
-        {
-            sopa[i][j]= sopa1.seleccionarLetra(id);
-            id++;
-        }
+    for(auto it = analizador1.mapaFichero.begin() ; it != analizador1.mapaFichero.end() ; it++)
+    {
+        if ( sopa1.buscarPalabra(it->first) ) 
+            cout<<"'"<< (it->first) <<"'"<< " esta en la sopa"<<endl;
     }
-
-
-    // PSEUDOCODIGO TO C++
-
     
 
-    */
     int a;
     cin>>a;
     

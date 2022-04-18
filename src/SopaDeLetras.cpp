@@ -100,21 +100,31 @@ char SopaDeLetras::seleccionarLetra(int id)     // Devuelve la letra de la sopa
     string letra;
     if( mapaSopa.find(id) != mapaSopa.end() ){
         letra = ( mapaSopa.find(id) )-> second;
-        resul= letra[1];
+        resul= letra[0];
     }
     else resul = 0;
     return resul;
 }
 
-void SopaDeLetras::buscarPalabra(string palabra)
+bool SopaDeLetras::esta_fuera(int fila,int columna){
+    bool resul=false;
+    if(fila>filas) resul=true;
+    if(columna>columnas) resul=true;
+
+    return resul;
+}
+
+bool SopaDeLetras::buscarPalabra(string palabra)
 {
-    int maxFila = getFilas();
-    int maxCol = getColumnas();
+    bool seguir=false;
+    
+    int maxFila = filas;
+    int maxCol = columnas;
     int direcFil;
     int direcCol;
     iterator<string,int> it;
-    
-    string palabra;
+    string palabraFormada = "";
+    palabraFormada=palabraFormada+palabra[0];
 
     char sopa[maxFila][maxCol];
 
@@ -172,11 +182,36 @@ void SopaDeLetras::buscarPalabra(string palabra)
                             break;
                     }
 
-                    bool seguir=true;
+                    seguir=true;
                     int fila=f;
                     int col=c;
-               //     for(int l=1 ; l < palabra.end())
+               
+                    for( int l=1 ; l<=palabra.length() ; l++ ){
+                        fila=fila+direcFil;
+                        col=col+direcCol;
+
+                        if(esta_fuera(fila,col)==true){
+                            seguir=false;
+                            break;
+                        }
+                        
+                        if( palabra[l]==sopa[fila][col] )   palabraFormada=palabraFormada+palabra[l];
+
+                        if( palabra==palabraFormada ) break;
+
+                        if( palabra[l]!=sopa[fila][col] ){
+                            seguir=false;
+                            break;
+                        }
+                    }
+
+                    if(seguir==true){
+                        //palabra encontrada
+                        break;
+                    }
+
                 }
+                return seguir;
             }
         }
 
@@ -185,7 +220,7 @@ void SopaDeLetras::buscarPalabra(string palabra)
 
 
 
-
+    
 
 }
 
