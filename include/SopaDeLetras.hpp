@@ -38,7 +38,7 @@ class SopaDeLetras{
 
         char seleccionarLetra(int);       // selecciona letra de la sopa
 
-        bool esta_fuera(int fila,int columna);
+        bool esta_fuera(int fila,int columna);  //Comprueba si la posición está fuera de la matriz
         bool buscarPalabra(string);
 
 };

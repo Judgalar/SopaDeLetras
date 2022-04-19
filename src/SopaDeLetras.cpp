@@ -165,7 +165,7 @@ bool SopaDeLetras::buscarPalabra(string palabra)
                             direcFil=1;
                             direcCol=-1;
                             break;
-                        case 4: //Izquierda <--
+                        case 4: //Izquierda 
                             direcFil=0;
                             direcCol=-1;
                             break;
