@@ -19,7 +19,8 @@ int main()
     sopa1.rellenarSopa();
     sopa2.rellenarSopa();
 
-//ANALIZADOR 1 Y SOPA 1
+ //ANALIZADOR 1 Y SOPA 1
+ cout<<"---SOPA DE LETRAS 1---"<<endl<<endl;
     
     // METODOS ANALIZADOR
 
@@ -40,11 +41,15 @@ int main()
 
     for(auto it = analizador1.mapaFichero.begin() ; it != analizador1.mapaFichero.end() ; it++)
     {
-        if ( sopa1.buscarPalabra(it->first) ) 
+        if ( sopa1.buscarPalabra(it->first) == true ) 
             cout<<"'"<< (it->first) <<"'"<< " esta en la sopa"<<endl;
     }
+
+    cout<<endl<<endl<<endl;
     
-//ANALIZADOR 2 Y SOPA 2
+ //ANALIZADOR 2 Y SOPA 2
+  cout<<"---SOPA DE LETRAS 2---"<<endl<<endl;
+
     
     // METODOS ANALIZADOR
 
@@ -60,14 +65,14 @@ int main()
    
     //  SOPA DE LETRAS
     cout<<"<SOPA DE LETRAS>"<<endl;
+    sopa2.imprimirSopa();
     cout<<endl;
-    /* IMPRIMIR SOPA SEGMENTATION FAULT */
+
     for(auto it = analizador2.mapaFichero.begin() ; it != analizador2.mapaFichero.end() ; it++)
     {
         if ( sopa2.buscarPalabra(it->first) ) 
             cout<<"'"<< (it->first) <<"'"<< " esta en la sopa"<<endl;
     }
-    /*SOLO IMPRIME a*/
 
     return 0;
 }

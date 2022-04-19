@@ -91,7 +91,7 @@ void Analizador::histograma_H(){
     while( it != mapaFichero.end() )
     {
         cout << "[" << it->first << "]";
-        for(int i=0 ; i < it->second ; i++){
+        for(int i=1 ; i <= it->second ; i++){
             cout<<"#";
         }
         cout<<endl;

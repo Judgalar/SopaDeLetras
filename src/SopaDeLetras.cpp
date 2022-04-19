@@ -74,8 +74,9 @@ void SopaDeLetras::rellenarSopa(){
 
             if(palabra!="")
             {
-                nLetra++;
+                
                 mapaSopa[nLetra]=palabra;
+                nLetra++;
             }
         }
     }
@@ -108,8 +109,8 @@ char SopaDeLetras::seleccionarLetra(int id)     // Devuelve la letra de la sopa
 
 bool SopaDeLetras::esta_fuera(int fila,int columna){
     bool resul=false;
-    if(fila>filas) resul=true;
-    if(columna>columnas) resul=true;
+    if(fila>=filas) resul=true;
+    if(columna>=columnas) resul=true;
 
     return resul;
 }
@@ -139,8 +140,8 @@ bool SopaDeLetras::buscarPalabra(string palabra)
 
     //PSEUDOCODE TO C++
 
-    for( int f=0 ; f<=maxFila ; f++){
-        for( int c=0 ; c<=maxCol ; c++){
+    for( int f=0 ; f<maxFila ; f++){
+        for( int c=0 ; c<maxCol ; c++){
             
             if(palabra[0]==sopa[f][c]){
 
@@ -148,11 +149,11 @@ bool SopaDeLetras::buscarPalabra(string palabra)
                 {
                     switch(direccion)
                     {
-                        case 0: //Derecha---->
+                        case 0: //Derecha
                             direcFil=0;
                             direcCol=1;
                             break;
-                        case 1: //Diagonal Abajo Derecha-->
+                        case 1: //Diagonal Abajo Derecha
                             direcFil=1;
                             direcCol=1;
                             break;
@@ -160,7 +161,7 @@ bool SopaDeLetras::buscarPalabra(string palabra)
                             direcFil=1;
                             direcCol=0;
                             break;
-                        case 3: //Diagonal Abajo Izquierda<--
+                        case 3: //Diagonal Abajo Izquierda
                             direcFil=1;
                             direcCol=-1;
                             break;
@@ -168,7 +169,7 @@ bool SopaDeLetras::buscarPalabra(string palabra)
                             direcFil=0;
                             direcCol=-1;
                             break;
-                        case 5: //Diagonal Izquierda Arriba<--
+                        case 5: //Diagonal Izquierda Arriba
                             direcFil=-1;
                             direcCol=-1;
                             break;
@@ -176,7 +177,7 @@ bool SopaDeLetras::buscarPalabra(string palabra)
                             direcFil=-1;
                             direcCol=0;
                             break;
-                        case 7: //Diagonal Derecha Arriba-->
+                        case 7: //Diagonal Derecha Arriba
                             direcFil=-1;
                             direcCol=1;
                             break;
@@ -186,7 +187,7 @@ bool SopaDeLetras::buscarPalabra(string palabra)
                     int fila=f;
                     int col=c;
                
-                    for( int l=1 ; l<=palabra.length() ; l++ ){
+                    for( int l=1 ; l<palabra.length() ; l++ ){
                         fila=fila+direcFil;
                         col=col+direcCol;
 
@@ -221,7 +222,7 @@ bool SopaDeLetras::buscarPalabra(string palabra)
 
 
     
-
+    return seguir;
 }
 
 
