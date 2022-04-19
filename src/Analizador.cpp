@@ -100,8 +100,45 @@ void Analizador::histograma_H(){
 
 }
 
-void Analizador::histograma_V(){
+void Analizador::histograma_V()
+{   
+    int i_A[10]={0,0,0,0,0,0,0,0,0,0};     //Imprimir Almohadillas
+    int a_I[10]={0,0,0,0,0,0,0,0,0,0};     //Almohadillas Impresas
+    auto it = mapaFichero.begin();
+    for(int i=0 ; i<10 ; i++){
+        if(it!=mapaFichero.end()){
+            cout<<" "<<it->first;
+            i_A[i]=it->second;
+            it++;
+        }
+    }
+    cout<<endl;
 
+    while( (i_A[1]!=a_I[1]) || (i_A[2]!=a_I[2]) || (i_A[3]!=a_I[3]) || (i_A[4]!=a_I[4]) || (i_A[5]!=a_I[5]) || (i_A[6]!=a_I[6]) || (i_A[7]!=a_I[7])
+    || (i_A[8]!=a_I[8])  || (i_A[9]!=a_I[9]) || (i_A[0]!=a_I[0]) )
+    {
+
+        it = mapaFichero.begin();
+        for(int i=0 ; i<10 ; i++){
+            if(it!=mapaFichero.end()){
+                string palabra=it->first;
+                if(i_A[i]!=a_I[i]){
+                    
+                    for(auto iter=palabra.begin() ; iter<palabra.end() ; iter++)    cout<<" ";
+                    cout<<"#";
+                    
+                    a_I[i]++;
+                }
+                else {
+                    for(auto iter=palabra.begin() ; iter<palabra.end() ; iter++)    cout<<" ";
+                    cout<<" ";
+                }
+                it++;
+            }
+        }
+        cout<<endl;
+
+    }
 }
 
 void Analizador::calcular_longitudMedia(){

@@ -29,6 +29,9 @@ int main()
     cout<<"HISTOGRAMA HORIZONTAL"<<endl;
     analizador1.histograma_H();
     cout<<endl;
+    cout<<"HISTOGRAMA VERTICAL"<<endl;
+    analizador1.histograma_V();
+    cout<<endl;
     analizador1.calcular_longitudMedia();
     cout<<"La palabra mas repetida es : "<< analizador1.palabraMasUsada() <<endl;
     cout<<"La palabra menos repetida es : "<< analizador1.palabraMenosUsada() <<endl;
@@ -57,6 +60,9 @@ int main()
 
     cout<<"HISTOGRAMA HORIZONTAL"<<endl;
     analizador2.histograma_H();
+    cout<<endl;
+    cout<<"HISTOGRAMA VERTICAL"<<endl;
+    analizador2.histograma_V();
     cout<<endl;
     analizador2.calcular_longitudMedia();
     cout<<"La palabra mas repetida es : "<< analizador2.palabraMasUsada() <<endl;
