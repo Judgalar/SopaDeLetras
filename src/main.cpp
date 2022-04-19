@@ -22,7 +22,7 @@ int main()
     sopa2.rellenarSopa();
 
  //ANALIZADOR 1 Y SOPA 1
- cout<<"---SOPA DE LETRAS 1---"<<endl<<endl;
+ cout<<"---FICHERO DE TEXTO 1---"<<endl<<endl;
     
     // METODOS ANALIZADOR
 
@@ -40,7 +40,7 @@ int main()
     cout<<endl;
    
     //  SOPA DE LETRAS
-    cout<<"<SOPA DE LETRAS>"<<endl;
+    cout<<"<SOPA DE LETRAS 1>"<<endl;
     sopa1.imprimirSopa();
     cout<<endl;
 
@@ -53,7 +53,7 @@ int main()
     cout<<endl<<endl<<endl;
     
  //ANALIZADOR 2 Y SOPA 2
-  cout<<"---SOPA DE LETRAS 2---"<<endl<<endl;
+  cout<<"---FICHERO DE TEXTO 2---"<<endl<<endl;
 
     
     // METODOS ANALIZADOR
@@ -72,7 +72,7 @@ int main()
     cout<<endl;
    
     //  SOPA DE LETRAS
-    cout<<"<SOPA DE LETRAS>"<<endl;
+    cout<<"<SOPA DE LETRAS 2>"<<endl;
     sopa2.imprimirSopa();
     cout<<endl;
 
