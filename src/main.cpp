@@ -8,13 +8,15 @@ int main()
     //  CONSTRUCTORES
 
     Analizador analizador1;                                  // texto predeterminado: bin/texto.txt
-    Analizador analizador2("/home/jd/c++/SopaDeLetras/bin/texto2.txt");
+
+    Analizador analizador2("/home/jd/c++/SopaDeLetras/bin/texto2.txt");     // ¡¡¡ESCRIBIR TU RUTA AL FICHERO QUE QUIERES ANALIZAR!!!!!!!!
 
     analizador1.txtToMap();
     analizador2.txtToMap();
 
-    SopaDeLetras sopa1;
-    SopaDeLetras sopa2("/home/jd/c++/SopaDeLetras/bin/sopa2.txt");
+    SopaDeLetras sopa1;                 // texto predeterminado: bin/texto
+
+    SopaDeLetras sopa2("/home/jd/c++/SopaDeLetras/bin/sopa2.txt");      // ¡¡¡ESCRIBIR TU RUTA AL FICHERO QUE QUIERES ANALIZAR!!!!!!!!
 
     sopa1.rellenarSopa();
     sopa2.rellenarSopa();
