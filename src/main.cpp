@@ -17,7 +17,7 @@ int main()
     analizador2.txtToMap();
     analizador3.txtToMap();
 
-    SopaDeLetras sopa1;                 // texto predeterminado: bin/texto
+    SopaDeLetras sopa1;                 // texto predeterminado: bin/sopa.txt
 
     SopaDeLetras sopa2("/home/jd/C++/SopaDeLetras/bin/sopa2.txt");      // ¡¡¡ESCRIBIR TU RUTA AL FICHERO QUE QUIERES ANALIZAR!!!!!!!!
 
