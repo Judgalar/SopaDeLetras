@@ -8,6 +8,10 @@ Analizador::Analizador(){
 
 Analizador::Analizador(string ruta_T)
 {
+    for(int i=0;i<=256;i++){     //Establece a 0 el vector
+        rutaFichero[i] = 0;
+    }
+
     for(int i=0;i<ruta_T.length();i++){     //Establece la ruta al fichero de texto indicada
         rutaFichero[i] = ruta_T[i];
     }

@@ -124,13 +124,15 @@ bool SopaDeLetras::buscarPalabra(string palabra)
     int direcFil;
     int direcCol;
     iterator<string,int> it;
-    string palabraFormada = "";
+    string palabraVacia = "";
+    string palabraFormada;
     palabraFormada=palabraFormada+palabra[0];
 
     char sopa[maxFila][maxCol];
-
-    int id=1;
-    for(int i=0 ; i<maxFila ; i++){                                 //RELLENA MATRIZ CON EL MAPA SOPA
+    
+    //RELLENA MATRIZ CON EL MAPA SOPA
+    int id=0;   
+    for(int i=0 ; i<maxFila ; i++){                                
         for(int j= 0 ; j<maxCol ; j++)
         {
             sopa[i][j] = seleccionarLetra(id);
@@ -152,34 +154,42 @@ bool SopaDeLetras::buscarPalabra(string palabra)
                         case 0: //Derecha
                             direcFil=0;
                             direcCol=1;
+                            palabraFormada=palabraVacia+palabra[0];
                             break;
                         case 1: //Diagonal Abajo Derecha
                             direcFil=1;
                             direcCol=1;
+                            palabraFormada=palabraFormada=palabraVacia+palabra[0];
                             break;
                         case 2: //Abajo
                             direcFil=1;
                             direcCol=0;
+                            palabraFormada=palabraFormada=palabraVacia+palabra[0];
                             break;
                         case 3: //Diagonal Abajo Izquierda
                             direcFil=1;
                             direcCol=-1;
+                            palabraFormada=palabraFormada=palabraVacia+palabra[0];
                             break;
                         case 4: //Izquierda 
                             direcFil=0;
                             direcCol=-1;
+                            palabraFormada=palabraFormada=palabraVacia+palabra[0];
                             break;
                         case 5: //Diagonal Izquierda Arriba
                             direcFil=-1;
                             direcCol=-1;
+                            palabraFormada=palabraFormada=palabraVacia+palabra[0];
                             break;
                         case 6: //Arriba
                             direcFil=-1;
                             direcCol=0;
+                            palabraFormada=palabraFormada=palabraVacia+palabra[0];
                             break;
                         case 7: //Diagonal Derecha Arriba
                             direcFil=-1;
                             direcCol=1;
+                            palabraFormada=palabraFormada=palabraVacia+palabra[0];
                             break;
                     }
 
@@ -212,7 +222,10 @@ bool SopaDeLetras::buscarPalabra(string palabra)
                     }
 
                 }
-                return seguir;
+                if(seguir==true){
+                    //palabra encontrada
+                    return seguir;
+                }
             }
         }
 
